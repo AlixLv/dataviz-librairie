@@ -4,3 +4,8 @@
     margin: auto;
     border: solid 1px;
 }
+
+div {
+    width: 100px;
+    height: 100px;
+}
