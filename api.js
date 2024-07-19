@@ -19,9 +19,9 @@ let tableDiv = [
 const getData = async () => {
     const response = await fetch(url);
     const data = await response.json();
-    console.log("coucou")
 
     let bookshopList = [];
+
 
 await createList(data, bookshopList);
 
@@ -43,43 +43,65 @@ const createList = async (originalData, newTable) => {
 };
 
 
+
+
+
 const renderData = async (bookshopListReady) => {
     const container = document.querySelector('.container');
   
     if (!bookshopListReady) {
         return;
     }
- 
+    
+    const itemsPerPage = 10;
+    let numberPages = Math.ceil(bookshopListReady.length/itemsPerPage);
 
+    const parentPagination = document.querySelector('.pages');
 
-    bookshopListReady.forEach((item, index) => {
-        if (index < 10) {
+    for (let i = 1; i <= numberPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.classList.add('pagination');
+        pageButton.innerHTML = i;
+
+        const pageLink = document.createElement('a');
+        pageLink.setAttribute('href', `/?page=${i}`);
+        console.log(pageLink);
+        console.log(typeof(pageLink));
+
+        pageLink.appendChild(pageButton);
+        parentPagination.appendChild(pageLink);
+    };
+
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    let pageVisible = urlParams.get("page");
+    if (!window.location.search) {
+        pageVisible = 1;
+    }
+    let pageIndex = pageVisible - 1;
+    console.log(`Index: ${pageIndex}`);
+    console.log(`Visible: ${pageVisible}`);
+
+for (let i = (pageIndex*itemsPerPage); i < (pageIndex*itemsPerPage)+itemsPerPage; i++){
+    
+    if (!bookshopListReady[i]) {break}
+
     const list =  document.createElement('div');
     list.classList.add('list')
     
     const name = document.createElement('h3');
     name.classList.add('name');
-    name.textContent = item.fields.nom_structure;
+    name.textContent = bookshopListReady[i].fields.nom_structure;
 
     const adress = document.createElement('p');
     adress.classList.add('adress');
-    adress.textContent = item.fields.adresse;
-
-    const zipcode = document.createElement('p');
-    zipcode.classList.add('zipcode');
-    zipcode.textContent = item.fields.code_postal;
-
+    adress.innerHTML = `${bookshopListReady[i].fields.adresse}</br>${bookshopListReady[i].fields.code_postal} ${bookshopListReady[i].fields.ville}`;
 
     list.appendChild(name);
     list.appendChild(adress);
-    list.appendChild(zipcode);
     container.appendChild(list);
-    }
-    else {
-        return;
-    }
-    });
 }
+};
 
 
 

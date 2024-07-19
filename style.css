@@ -5,7 +5,7 @@
     border: solid 1px;
 }
 
-div {
+.list {
     width: 300px;
-    height: 300px;
+    height: 100px;
 }
