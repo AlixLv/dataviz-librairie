@@ -1,3 +1,9 @@
+body {
+    font-family: Poppins, sans-serif;
+
+}
+
+
 #map { 
     height: 400px; 
     width: 600px;
@@ -7,5 +13,82 @@
 
 .list {
     width: 300px;
-    height: 100px;
+    height: 250px;
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px 70px;
+    justify-content: center;
+}
+
+ .material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
+h1 span {
+    display: block;
+    animation: reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
+}
+
+@keyframes reveal {
+    0% {
+        transform: translate(0, 100%);
+    }
+
+    100% {
+        transform: translate(30, 0);
+    }
+}
+
+h2 {
+   margin: 2em 0em 3em 0em; 
+}
+
+p{
+    margin: 2em 0em 2em 0em;
+    font-size: 1.3rem;
+}
+
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.name {
+    margin: 0px;
+}
+
+.adress {
+    margin: 0px;
+}
+
+.allbuttons {
+    display:grid;
+    grid-template-rows: auto auto;
 }
