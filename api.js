@@ -1,42 +1,116 @@
-// HttpClient httpclient = new DefaultHttpClient();
-// HttpGet request = new HttpGet('https://www.data.gouv.fr/fr/datasets/r/a013e874-299b-4595-acfc-597ab539f09d');
-// request.addHeader("x-api-key", 'eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjoiNjY5ODBiZTA0MTRjNmZmY2Q1MWY5MTE0IiwidGltZSI6MTcyMTI0MjQxMC4yNDEyMDE2fQ.w_kvdL4waIY6PZR70a_c6Fw0smbY9RDl-S1oiQg65DaOwm_N6IwAHshtc3zxglvg6ANZkuoOvPAOxInlUefNBg');
-// HttpResponse response = httpclient.execute(request);
-
 //fonctions relatives à la liste des librairies indépendantes
-const url = 'https://www.data.gouv.fr/fr/datasets/r/a013e874-299b-4595-acfc-597ab539f09d'; 
+const url = 'https://run.mocky.io/v3/13440ba5-a349-4af2-8dcf-29c1e132b874'; 
+
+let tableDiv = [
+    document.getElementById("0"),
+    document.getElementById("1"),
+    document.getElementById("2"),
+    document.getElementById("3"),
+    document.getElementById("4"),
+    document.getElementById("5"),
+    document.getElementById("6"),
+    document.getElementById("7"),
+    document.getElementById("8"),
+    document.getElementById("9")
+];
 
 
-(async () => {
-// const response = await fetch(url);
-// const data = await response.json(); //parlsing en json pour pouvoir manipuler les data
 
- const response = await fetch('https://www.data.gouv.fr/api/1/datasets/r/a013e874-299b-4595-acfc-597ab539f09d', {
-        headers: {
-            'X-API-KEY': 'eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyIjoiNjY5ODBiZTA0MTRjNmZmY2Q1MWY5MTE0IiwidGltZSI6MTcyMTI0ODk0NC44MjEwMDE4fQ.EqixDd2oaauFU-7tiO1YTQOC8z1sZ8HBxiO7Z60o8F9YkSEUzDhZdK01vQxyAnLF2WLBPZlYjTRYL1xRvQScXQ'
-        }
-    });
+const getData = async () => {
+    const response = await fetch(url);
     const data = await response.json();
-    console.log(data)
 
-let numberOfResult = 0;
-let tenBookshop = 0;
-let bookshopList = [];
+    let bookshopList = [];
 
-for (let i = 0; i < data.length; i++){
-    if (data[i].fields.label_01 === 'Label LiR' && data[i].fields.ville === 'PARIS'){
+
+await createList(data, bookshopList);
+
+await renderData(bookshopList); 
+
+}
+
+getData();
+
+
+const createList = async (originalData, newTable) => {
+    let numberOfResult = 0;
+    for (let i = 0; i < originalData.length; i++){
+    if (originalData[i].fields.label_01 === 'Label LiR' && originalData[i].fields.ville === 'PARIS'){
         numberOfResult ++;
-        bookshopList.push(data[i]);                    
+        newTable.push(originalData[i]);                    
 }
 }
-console.log(bookshopList);
-for (let i = 0; i < 9 ; i++){
-    tenBookshop ++
-}
+};
 
-let testDiv = await document.getElementById("0");
-testDiv.innerHTML = await bookshopList.name_structure;
-})();
+
+
+
+
+const renderData = async (bookshopListReady) => {
+    const container = document.querySelector('.container');
+  
+    if (!bookshopListReady) {
+        return;
+    }
+    
+    const itemsPerPage = 10;
+    let numberPages = Math.ceil(bookshopListReady.length/itemsPerPage);
+
+    const parentPagination = document.querySelector('.pages');
+
+    for (let i = 1; i <= numberPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.classList.add('pagination');
+        pageButton.innerHTML = i;
+
+        const pageLink = document.createElement('a');
+        pageLink.setAttribute('href', `/?page=${i}`);
+        console.log(pageLink);
+        console.log(typeof(pageLink));
+
+        pageLink.appendChild(pageButton);
+        parentPagination.appendChild(pageLink);
+    };
+
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    let pageVisible = urlParams.get("page");
+    if (!window.location.search) {
+        pageVisible = 1;
+    }
+    let pageIndex = pageVisible - 1;
+    console.log(`Index: ${pageIndex}`);
+    console.log(`Visible: ${pageVisible}`);
+
+for (let i = (pageIndex*itemsPerPage); i < (pageIndex*itemsPerPage)+itemsPerPage; i++){
+    
+    if (!bookshopListReady[i]) {break}
+
+    const list =  document.createElement('div');
+    list.classList.add('list')
+    
+    const name = document.createElement('h3');
+    name.classList.add('name');
+    name.textContent = bookshopListReady[i].fields.nom_structure;
+
+    const adress = document.createElement('p');
+    adress.classList.add('adress');
+    adress.innerHTML = `${bookshopListReady[i].fields.adresse}</br>${bookshopListReady[i].fields.code_postal} ${bookshopListReady[i].fields.ville}`;
+
+    list.appendChild(name);
+    list.appendChild(adress);
+    container.appendChild(list);
+}
+};
+
+
+
+
+
+
+
+
+
 
 
 
