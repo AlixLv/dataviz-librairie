@@ -43,6 +43,9 @@ const createList = async (originalData, newTable) => {
 };
 
 
+
+
+
 const renderData = async (bookshopListReady) => {
     const container = document.querySelector('.container');
   
