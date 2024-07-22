@@ -1,21 +1,7 @@
 //fonctions relatives à la liste des librairies indépendantes
 const url = 'https://run.mocky.io/v3/13440ba5-a349-4af2-8dcf-29c1e132b874'; 
 
-let tableDiv = [
-    document.getElementById("0"),
-    document.getElementById("1"),
-    document.getElementById("2"),
-    document.getElementById("3"),
-    document.getElementById("4"),
-    document.getElementById("5"),
-    document.getElementById("6"),
-    document.getElementById("7"),
-    document.getElementById("8"),
-    document.getElementById("9")
-];
-
-
-
+// fonction pple asynch qui va chercher les données via l'API auprès du serveur
 const getData = async () => {
     const response = await fetch(url);
     const data = await response.json();
@@ -31,7 +17,7 @@ await renderData(bookshopList);
 
 getData();
 
-
+// Fonction qui filtre les objets de mon tableau de données API
 const createList = async (originalData, newTable) => {
     let numberOfResult = 0;
     for (let i = 0; i < originalData.length; i++){
@@ -45,7 +31,7 @@ const createList = async (originalData, newTable) => {
 
 
 
-
+// Fonction mise en page de données mon tableau Bookshoplist
 const renderData = async (bookshopListReady) => {
     const container = document.querySelector('.container');
   
