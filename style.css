@@ -1,3 +1,10 @@
+*{
+    margin : 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 body {
     font-family: Poppins, sans-serif;
 
@@ -32,6 +39,11 @@ body {
         'opsz' 24
 }
 
+h1 {
+    background-color: #6687a0;
+    margin-bottom: 3px;
+}
+
 h1 span {
     display: block;
     animation: reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
@@ -49,6 +61,8 @@ h1 span {
 
 h2 {
    margin: 2em 0em 3em 0em; 
+   padding: 0.3em;
+   background-color: #65a7da;
 }
 
 p{
@@ -91,4 +105,28 @@ p{
 .allbuttons {
     display:grid;
     grid-template-rows: auto auto;
+}
+
+.accueil {
+
+    display: grid;
+    grid-template-columns: auto auto;
+
+}
+
+.texte {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+
+}
+
+aside {
+align-self: flex-end;
+}
+
+.list {
+    background-color: rgb(245, 237, 226);
+    border: 1.5px black solid; 
+    padding : 10px;
 }
