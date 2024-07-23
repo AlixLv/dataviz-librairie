@@ -1,31 +1,35 @@
 //fonctions relatives à la liste des librairies indépendantes
-const url = 'https://run.mocky.io/v3/13440ba5-a349-4af2-8dcf-29c1e132b874'; 
+const url = 'https://run.mocky.io/v3/034c9174-e811-47fc-98a2-5ddc59d4d3bd'; 
 
 // fonction pple asynch qui va chercher les données via l'API auprès du serveur
 const getData = async () => {
     const response = await fetch(url);
     const data = await response.json();
 
-    let bookshopList = [];
+    const bookshopList = await createList(data);
+    // console.log(bookshopList);
 
+    
+    let coords = getCoords(bookshopList);
+    initMap(bookshopList, coords);
 
-await createList(data, bookshopList);
-
-await renderData(bookshopList); 
+    await renderData(bookshopList); 
 
 }
 
 getData();
 
 // Fonction qui filtre les objets de mon tableau de données API
-const createList = async (originalData, newTable) => {
+const createList = async (originalData) => {
+    let prepareBookshopList = [];
     let numberOfResult = 0;
     for (let i = 0; i < originalData.length; i++){
     if (originalData[i].fields.label_01 === 'Label LiR' && originalData[i].fields.ville === 'PARIS'){
         numberOfResult ++;
-        newTable.push(originalData[i]);                    
+        prepareBookshopList.push(originalData[i]);                    
 }
 }
+return prepareBookshopList;
 };
 
 
@@ -93,20 +97,3 @@ for (let i = (pageIndex*itemsPerPage); i < (pageIndex*itemsPerPage)+itemsPerPage
     container.appendChild(list);
 }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
