@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>librairies independantes</title>
+    <title>ParisLibr.</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""/>
@@ -25,18 +25,40 @@
 
 <body>
     <main>
-        <h1><span>ParisLibr.</span></h1>
+        <header><h1>ParisLibr.</h1></header>
         <section class="accueil"> 
-        <div class ="texte"> 
-        <p>Trouve la librairie indépendante la plus proche de chez toi.</p>
-        <aside>
-            <p>
-               Toutes les librairies référencées ont reçu le label "Librairie indépendante de Référence"
+            <aside class="texte"> 
+            <div id="filtre">
+                <p id="introduction">Trouve la librairie indépendante la plus proche de chez toi :</p>
+                <div id="arrondissements">
+                    <button class="boutonArr" id="arr1">Paris 1</button>
+                    <button class="boutonArr" id="arr2">Paris 2</button>
+                    <button class="boutonArr" id="arr3">Paris 3</button>
+                    <button class="boutonArr" id="arr4">Paris 4</button>
+                    <button class="boutonArr" id="arr5">Paris 5</button>
+                    <button class="boutonArr" id="arr6">Paris 6</button>
+                    <button class="boutonArr" id="arr7">Paris 7</button>
+                    <button class="boutonArr" id="arr8">Paris 8</button>
+                    <button class="boutonArr" id="arr9">Paris 9</button>
+                    <button class="boutonArr" id="arr10">Paris 10</button>
+                    <button class="boutonArr" id="arr11">Paris 11</button>
+                    <button class="boutonArr" id="arr12">Paris 12</button>
+                    <button class="boutonArr" id="arr13">Paris 13</button>
+                    <button class="boutonArr" id="arr14">Paris 14</button>
+                    <button class="boutonArr" id="arr15">Paris 15</button>
+                    <button class="boutonArr" id="arr16">Paris 16</button>
+                    <button class="boutonArr" id="arr17">Paris 17</button>
+                    <button class="boutonArr" id="arr18">Paris 18</button>
+                    <button class="boutonArr" id="arr19">Paris 19</button>
+                    <button class="boutonArr" id="arr20">Paris 20</button>
+            </div>
+            </div>
+            <p id="remarque">
+                Toutes les librairies référencées ont reçu le label "Librairie indépendante de Référence"
             </p>
-           </aside>
-    </div>
-        <!-- affichage de la carte -->
-    <div id="map"></div>
+            </aside>
+            <!-- affichage de la carte -->
+            <div id="map"></div>
         </section>
         
     <!-- liste des librairies parisiennes indépendantes -->
@@ -45,18 +67,18 @@
     
         <h2>Librairies indépendantes situées à Paris</h2>
    
-        <div class="container" id="0"></div>
+        <div class="container" id="0">
+
+        </div>
 
     </section>
     <!-- pagination, besoin de 10 pages -->
     <section class="allbuttons">
-        <button class= "navigation" onclick="history.back(-1)">Précédent</button>
         <div class="pages"></div>
-        <button class= "navigation" onclick="history.back(-1)">Suivant</button>
     </section>
     </main>
     <footer>
-        <nav>Produced by : 
+        <nav>Créé par : 
         <span>Ketsia Eloi</span>
         <span>Anne Kaftal</span>
         <span>Alix Levé</span>
