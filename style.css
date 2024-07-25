@@ -1,132 +1,212 @@
-*{
-    margin : 0; 
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
-body {
-    font-family: Poppins, sans-serif;
-
-}
-
-
-#map { 
-    height: 400px; 
-    width: 600px;
-    margin: auto;
-    border: solid 1px;
-}
-
-.list {
-    width: 300px;
-    height: 250px;
-}
-
-
-.container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 20px 70px;
-    justify-content: center;
-}
-
- .material-symbols-outlined {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
-}
-
-h1 {
-    background-color: #6687a0;
-    margin-bottom: 3px;
-}
-
-h1 span {
-    display: block;
-    animation: reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
-}
-
-@keyframes reveal {
-    0% {
-        transform: translate(0, 100%);
+    *{
+        margin : 0; 
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    
+    body {
+        font-family: Poppins, sans-serif;
+        background-color: #fffff4;
+    }
+    
+    header {
+        height: 7em;
+        display: flex;
+        align-items: flex-end;
+        background-color: #fffff4;
+    }
+    
+    h1 {
+        font-size: 3.6em;
+        font-weight: 800;
+        font-style: normal;
+        color: #181929;
+        text-shadow: 2px 2px 2px #4b5456;
+        margin-left: 0.7em;
+        margin-bottom: 0.1em;
+    }
+    
+    .accueil {
+        margin: 0;
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    
+    .texte { 
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #181929;
     }
 
-    100% {
-        transform: translate(30, 0);
+    p{
+        margin: 2em 0em 2em 0em;
+        font-size: 1.3rem;
     }
-}
+     
+    #introduction {
+        font-size: 1.5em;
+        font-weight: 600;
+        margin-left: 1.8em;
+        margin-bottom: 2%;
+        width: 80%;
+        color:#fffff4
+    }
+    
+    #arrondissements {
+        margin-left: 2.8em;
+        display: grid;
+        grid-template-columns: repeat(5, 8.5%);
+        gap: 9% 9%;
+    }
 
-h2 {
-   margin: 2em 0em 3em 0em; 
-   padding: 0.3em;
-   background-color: #65a7da;
-}
+    .boutonArr{
+        background-color: #181929;
+        font-weight: 600;
+        border: #181929 solid 0.1px;
+        box-shadow: 1px 1px #301868, -1px -1px #b4bdf4;
+        width: 170%;
+        height: 2.5em;
+        border-radius: 5%;
+        color:#dbdef8;
+    }
 
-p{
-    margin: 2em 0em 2em 0em;
-    font-size: 1.3rem;
-}
+    .boutonArr:hover{
+        background-color: #dbdef8;
+        border: #dbdef8 solid;
+        border-radius: 5%;
+        color:#181929;
+    }
 
-.poppins-regular {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.poppins-medium {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-}
-
-.poppins-semibold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-}
-
-.poppins-bold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-}
-
-.name {
-    margin: 0px;
-}
-
-.adress {
-    margin: 0px;
-}
-
-.allbuttons {
-    display:grid;
-    grid-template-rows: auto auto;
-}
-
-.accueil {
-
-    display: grid;
-    grid-template-columns: auto auto;
-
-}
-
-.texte {
- display: flex;
- flex-direction: row;
- flex-wrap: wrap;
-
-}
-
-aside {
-align-self: flex-end;
-}
-
-.list {
-    background-color: rgb(245, 237, 226);
-    border: 1.5px black solid; 
-    padding : 10px;
-}
+    #remarque {
+        font-size: 1em;
+        width: 75%;
+        margin-left: 2.7em;
+        color: #fffff4;
+    }
+    
+    
+    #map { 
+        height: 30rem; 
+        width: 100%;
+        margin: auto;
+        border: solid 1px;
+    }
+    
+    h2 {
+        padding: 1.6%;
+        background-color: #fffff4;
+        font-size: 1.5em;
+        font-weight: 900;
+        height: 4em;
+        margin-left: 0.8em;
+        margin-top: 0.5em;
+        display: flex;
+        align-items: flex-end;
+        color: #181929;
+     }
+    
+    
+    .container {
+        margin-left: 3em;
+        margin-right: 3em;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 30px 30px;
+        justify-content: stretch;
+    }
+    
+    .allbuttons {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: baseline;
+        align-content: stretch;
+    } 
+    
+    .navigation {
+        width: 7%;
+    }
+    
+    .pages {
+    width: 90%;
+    }
+    
+    .list {
+        background-color: #dbdef8;
+        border: 1.5px #301868 solid; 
+        width: auto;
+        height: 16em;
+        padding : 10px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px #4b5456;
+    }
+    
+    .list:hover {
+        background-color: #b4bdf4;
+        color:#fffff4;
+    }
+    
+    
+    .name {
+        margin: 1em;
+        border-bottom: 0.6px #301868 solid;
+        color: #301868;
+    }
+    
+    .adress {
+        margin: 1em;
+        color: #301868;
+    }
+    
+    .pages {
+        margin: 2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .pagination {
+        margin: 1em;
+        padding: 1em 1.3em;
+        color: #301868;
+        font-size: 1em;
+        font-weight: 500;
+        background-color: #fffff4;
+        border: #dbdef8 1px solid;
+        box-shadow: 2px 2px 2px #4b5456;
+        border-radius: 5%;
+    }
+    
+    .pagination:hover {
+        background-color: #dbdef8;
+    }
+    
+    footer{
+        background-color: #181929;
+        color: #fffff4;
+        padding: 1.7%;
+        font-size: 1rem;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    nav:first-of-type{
+        display: flex;
+        flex-direction: column;
+        align-items:safe;
+    }
+    
+    nav span {
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    nav:last-of-type{
+        display: flex;
+        flex-direction: column;
+        align-items: self-end;
+        align-content: baseline;
+    }
